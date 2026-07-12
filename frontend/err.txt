@@ -1,7 +1,0 @@
-﻿src/pages/reports/ReportsPage.tsx(5,5): error TS6133: 'Calendar' is declared but its value is never read.
-src/pages/reports/ReportsPage.tsx(69,12): error TS6133: 'genStartDate' is declared but its value is never read.
-src/pages/reports/ReportsPage.tsx(69,26): error TS6133: 'setGenStartDate' is declared but its value is never read.
-src/pages/reports/ReportsPage.tsx(70,12): error TS6133: 'genEndDate' is declared but its value is never read.
-src/pages/reports/ReportsPage.tsx(70,24): error TS6133: 'setGenEndDate' is declared but its value is never read.
-src/pages/reports/ReportsPage.tsx(173,44): error TS6133: 'name' is declared but its value is never read.
-src/pages/reports/ReportsPage.tsx(449,46): error TS2304: Cannot find name 'Play'.
