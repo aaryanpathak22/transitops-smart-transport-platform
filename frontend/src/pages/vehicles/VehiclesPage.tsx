@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { showToast } from '@/utils/toast'
+import { fleetService } from "@/services/api/fleetService"
 import {
     Plus,
     Search,
@@ -48,13 +49,28 @@ const initialVehicles: Vehicle[] = [
 
 export function VehiclesPage() {
     // State
-    const [vehicles, setVehicles] = useState<Vehicle[]>(initialVehicles)
+    const [vehicles, setVehicles] = useState<Vehicle[]>([])
     const [searchTerm, setSearchTerm] = useState('')
     const [statusFilter, setStatusFilter] = useState<'all' | 'active' | 'maintenance' | 'offline'>('all')
     const [typeFilter, setTypeFilter] = useState<'all' | 'Electric Bus' | 'Electric Truck' | 'Electric Light Truck'>('all')
     const [isLoading, setIsLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
     const itemsPerPage = 5
+    useEffect(() => {
+  async function loadVehicles() {
+    try {
+      setIsLoading(true)
+
+      const data = await fleetService.getVehicles()
+
+      setVehicles(data)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  loadVehicles()
+}, [])
 
     // Modals state
     const [isAddOpen, setIsAddOpen] = useState(false)
