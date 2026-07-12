@@ -33,11 +33,7 @@ type ReportItem = {
     status: 'ready' | 'generating' | 'failed'
 }
 
-type Toast = {
-    id: string
-    message: string
-    type: 'success' | 'info' | 'error'
-}
+import { showToast } from '@/utils/toast'
 
 const initialReports: ReportItem[] = [
     { id: 'REP-001', name: 'June Fleet Fuel & Battery Efficiency Report', category: 'efficiency', createdDate: '2026-07-01', size: '2.4 MB', status: 'ready' },
@@ -73,19 +69,18 @@ export function ReportsPage() {
     const [currentPage, setCurrentPage] = useState(1)
     const itemsPerPage = 5
 
-    // Toast alerts state
-    const [toasts, setToasts] = useState<Toast[]>([])
-
     // Simulated refresh state
     const [isRefreshing, setIsRefreshing] = useState(false)
 
     // Show toast notifications helper
-    const triggerToast = (message: string, type: Toast['type'] = 'success') => {
-        const id = String(Date.now())
-        setToasts((prev) => [...prev, { id, message, type }])
-        setTimeout(() => {
-            setToasts((prev) => prev.filter((t) => t.id !== id))
-        }, 4000)
+    const triggerToast = (message: string, type: 'success' | 'info' | 'error' = 'success') => {
+        if (type === 'success') {
+            showToast.success(message)
+        } else if (type === 'error') {
+            showToast.error(message)
+        } else {
+            showToast.info(message)
+        }
     }
 
     // Simulate background process for generating reports
@@ -336,33 +331,6 @@ TransitOps Platforms Co. 2026. All rights reserved.`
 
     return (
         <div className="relative space-y-6 pb-20 lg:pb-0">
-            {/* Absolute Toast Elements container */}
-            <div className="fixed top-4 right-4 z-50 flex flex-col gap-2 max-w-sm w-full pointer-events-none">
-                {toasts.map((toast) => (
-                    <div
-                        key={toast.id}
-                        className={`pointer-events-auto flex items-center justify-between gap-3 rounded-lg border px-4 py-3 shadow-lg transition-transform duration-300 animate-in slide-in-from-top-4 ${toast.type === 'success'
-                            ? 'border-emerald-250 bg-emerald-50 text-emerald-800'
-                            : toast.type === 'error'
-                                ? 'border-red-250 bg-red-50 text-red-800'
-                                : 'border-blue-250 bg-blue-50 text-blue-800'
-                            }`}
-                    >
-                        <div className="flex items-center gap-2 text-sm font-semibold">
-                            {toast.type === 'success' && <CheckCircle2 className="h-4 w-4 text-emerald-600" />}
-                            {toast.type === 'error' && <AlertTriangle className="h-4 w-4 text-red-600" />}
-                            {toast.type === 'info' && <Loader2 className="h-4 w-4 text-blue-600 animate-spin" />}
-                            <span>{toast.message}</span>
-                        </div>
-                        <button
-                            onClick={() => setToasts((prev) => prev.filter((t) => t.id !== toast.id))}
-                            className="text-slate-400 hover:text-slate-600"
-                        >
-                            <X className="h-3.5 w-3.5" />
-                        </button>
-                    </div>
-                ))}
-            </div>
 
             <PageHeader
                 title="System Reports"

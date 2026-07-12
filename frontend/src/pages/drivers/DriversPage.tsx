@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { showToast } from '@/utils/toast'
 import {
     Plus,
     Search,
@@ -69,10 +70,13 @@ export function DriversPage() {
 
     // Simulate refresh
     const triggerRefresh = () => {
+        const toastId = showToast.loading('Updating operator registry...')
         setIsLoading(true)
         setTimeout(() => {
             setIsLoading(false)
-        }, 600)
+            showToast.dismiss(toastId)
+            showToast.success('Operator registry updated successfully!')
+        }, 700)
     }
 
     // Reset page when filters change
@@ -98,6 +102,7 @@ export function DriversPage() {
         setDrivers([newDriver, ...drivers])
         setIsAddOpen(false)
         resetForm()
+        showToast.success(`Driver "${newDriver.name}" deployed successfully.`)
     }
 
     const handleEditSave = (e: React.FormEvent) => {
@@ -122,11 +127,13 @@ export function DriversPage() {
         setDrivers(updated)
         setIsEditOpen(false)
         resetForm()
+        showToast.success(`Modified operator profile for "${formName}"`)
     }
 
     const handleDelete = (id: string) => {
         if (confirm('Are you sure you want to delete this driver profile?')) {
             setDrivers(drivers.filter((d) => d.id !== id))
+            showToast.success('Driver profile removed from registry.')
         }
     }
 

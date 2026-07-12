@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { showToast } from '@/utils/toast'
 import {
     Plus,
     Search,
@@ -70,10 +71,13 @@ export function VehiclesPage() {
 
     // Simulate refresh
     const triggerRefresh = () => {
+        const toastId = showToast.loading('Synchronizing fleet logs...')
         setIsLoading(true)
         setTimeout(() => {
             setIsLoading(false)
-        }, 600)
+            showToast.dismiss(toastId)
+            showToast.success('Fleet logs synchronized successfully!')
+        }, 700)
     }
 
     // Effect to reset page on search/filter changes
@@ -99,6 +103,7 @@ export function VehiclesPage() {
         setVehicles([newVehicle, ...vehicles])
         setIsAddOpen(false)
         resetForm()
+        showToast.success(`Vehicle unit "${newVehicle.plateNumber}" has been registered.`)
     }
 
     const handleEditSave = (e: React.FormEvent) => {
@@ -123,11 +128,13 @@ export function VehiclesPage() {
         setVehicles(updated)
         setIsEditOpen(false)
         resetForm()
+        showToast.success(`Changes saved for transit unit "${formPlate.toUpperCase()}"`)
     }
 
     const handleDelete = (id: string) => {
         if (confirm('Are you sure you want to delete this vehicle from the fleet?')) {
             setVehicles(vehicles.filter((v) => v.id !== id))
+            showToast.success(`Vehicle removed from registry.`)
         }
     }
 
