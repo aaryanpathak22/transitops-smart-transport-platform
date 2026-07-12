@@ -221,7 +221,7 @@ export function DashboardPage() {
             </h2>
           </CardHeader>
           <CardContent className="flex items-center justify-center p-6 min-h-[300px]">
-            <div className="h-68 w-68">
+            <div className="w-full max-w-[260px] h-[260px]">
               <Doughnut
                 data={vehicleStatusChartData}
                 options={{
@@ -307,8 +307,8 @@ export function DashboardPage() {
                 <tr className="border-b border-slate-100 bg-slate-50 text-xs font-semibold uppercase tracking-wider text-slate-500">
                   <th className="px-6 py-4">Trip Unit</th>
                   <th className="px-6 py-4">Assigned Vehicle / Driver</th>
-                  <th className="px-6 py-4">Departure Path</th>
-                  <th className="px-6 py-4">Schedule</th>
+                  <th className="px-6 py-4 hidden md:table-cell">Departure Path</th>
+                  <th className="px-6 py-4 hidden sm:table-cell">Schedule</th>
                   <th className="px-6 py-4">Status</th>
                   <th className="px-6 py-4 text-right">Monitoring</th>
                 </tr>
@@ -325,14 +325,14 @@ export function DashboardPage() {
                         <div className="text-xs text-slate-500">{trip.driver}</div>
                       </div>
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-6 py-4 hidden md:table-cell">
                       <div className="flex items-center gap-2 text-slate-600">
                         <span>{trip.startLocation}</span>
                         <ArrowRight className="h-3 w-3 text-slate-400 shrink-0" />
                         <span>{trip.endLocation}</span>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-slate-600">
+                    <td className="px-6 py-4 text-slate-600 hidden sm:table-cell">
                       <span className="font-medium">{trip.departure}</span>
                     </td>
                     <td className="px-6 py-4">

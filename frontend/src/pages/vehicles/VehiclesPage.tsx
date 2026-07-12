@@ -342,8 +342,8 @@ export function VehiclesPage() {
                                     <thead>
                                         <tr className="border-b border-slate-100 bg-slate-50 text-xs font-semibold uppercase tracking-wider text-slate-500">
                                             <th className="px-6 py-4">Vehicle Details</th>
-                                            <th className="px-6 py-4">Type</th>
-                                            <th className="px-6 py-4">Active Driver</th>
+                                            <th className="px-6 py-4 hidden sm:table-cell">Type</th>
+                                            <th className="px-6 py-4 hidden md:table-cell">Active Driver</th>
                                             <th className="px-6 py-4">Battery Level</th>
                                             <th className="px-6 py-4">Status</th>
                                             <th className="px-6 py-4 text-right">Actions</th>
@@ -363,8 +363,8 @@ export function VehiclesPage() {
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td className="px-6 py-4 text-slate-600 font-medium">{vehicle.type}</td>
-                                                <td className="px-6 py-4 text-slate-600 font-medium">
+                                                <td className="px-6 py-4 text-slate-600 font-medium hidden sm:table-cell">{vehicle.type}</td>
+                                                <td className="px-6 py-4 text-slate-600 font-medium hidden md:table-cell">
                                                     {vehicle.driver === 'N/A' || vehicle.driver === 'Unassigned' ? (
                                                         <span className="text-slate-400 font-normal italic">{vehicle.driver}</span>
                                                     ) : (

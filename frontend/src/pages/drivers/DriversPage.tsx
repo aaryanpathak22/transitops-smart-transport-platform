@@ -322,8 +322,8 @@ export function DriversPage() {
                                     <thead>
                                         <tr className="border-b border-slate-100 bg-slate-50 text-xs font-semibold uppercase tracking-wider text-slate-500">
                                             <th className="px-6 py-4">Driver Name</th>
-                                            <th className="px-6 py-4">License Number</th>
-                                            <th className="px-6 py-4">Phone Number</th>
+                                            <th className="px-6 py-4 hidden sm:table-cell">License Number</th>
+                                            <th className="px-6 py-4 hidden md:table-cell">Phone Number</th>
                                             <th className="px-6 py-4">Vehicle Assigned</th>
                                             <th className="px-6 py-4">Rating</th>
                                             <th className="px-6 py-4">Status</th>
@@ -344,8 +344,8 @@ export function DriversPage() {
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td className="px-6 py-4 font-mono text-xs text-slate-600">{driver.licenseNumber}</td>
-                                                <td className="px-6 py-4 text-slate-600">
+                                                <td className="px-6 py-4 font-mono text-xs text-slate-600 hidden sm:table-cell">{driver.licenseNumber}</td>
+                                                <td className="px-6 py-4 text-slate-600 hidden md:table-cell">
                                                     <div className="flex items-center gap-1.5">
                                                         <Phone className="h-3.5 w-3.5 text-slate-400" />
                                                         <span>{driver.phoneNumber}</span>

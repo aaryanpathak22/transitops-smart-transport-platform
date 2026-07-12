@@ -617,9 +617,9 @@ TransitOps Platforms Co. 2026. All rights reserved.`
                                     <thead>
                                         <tr className="border-b border-slate-100 bg-slate-50/70 text-[10px] font-bold uppercase tracking-wider text-slate-400">
                                             <th className="px-6 py-4">Report Info</th>
-                                            <th className="px-6 py-4">Category</th>
-                                            <th className="px-6 py-4">Generation Date</th>
-                                            <th className="px-6 py-4">File Size</th>
+                                            <th className="px-6 py-4 hidden sm:table-cell">Category</th>
+                                            <th className="px-6 py-4 hidden md:table-cell">Generation Date</th>
+                                            <th className="px-6 py-4 hidden sm:table-cell">File Size</th>
                                             <th className="px-6 py-4">Status</th>
                                             <th className="px-6 py-4 text-right">Actions</th>
                                         </tr>
@@ -650,17 +650,17 @@ TransitOps Platforms Co. 2026. All rights reserved.`
                                                 </td>
 
                                                 {/* Category Badge */}
-                                                <td className="px-6 py-4 whitespace-nowrap">
+                                                <td className="px-6 py-4 whitespace-nowrap hidden sm:table-cell">
                                                     {getCategoryBadge(report.category)}
                                                 </td>
 
                                                 {/* Generated Date */}
-                                                <td className="px-6 py-4 text-slate-600 font-medium whitespace-nowrap">
+                                                <td className="px-6 py-4 text-slate-600 font-medium whitespace-nowrap hidden md:table-cell">
                                                     {report.createdDate}
                                                 </td>
 
                                                 {/* File Size */}
-                                                <td className="px-6 py-4 text-slate-500 font-semibold whitespace-nowrap">
+                                                <td className="px-6 py-4 text-slate-500 font-semibold whitespace-nowrap hidden sm:table-cell">
                                                     {report.size}
                                                 </td>
 
