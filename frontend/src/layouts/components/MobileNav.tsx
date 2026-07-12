@@ -1,12 +1,13 @@
 import { NavLink } from 'react-router-dom'
-import { LayoutDashboard, Settings, Users } from 'lucide-react'
+import { LayoutDashboard, Truck, Users, FileText } from 'lucide-react'
 import { ROUTES } from '@/constants/routes'
 import { cn } from '@/utils/cn'
 
 const navItems = [
-  { to: ROUTES.HOME, label: 'Home', icon: LayoutDashboard },
-  { to: ROUTES.USERS, label: 'Users', icon: Users },
-  { to: ROUTES.SETTINGS, label: 'Settings', icon: Settings },
+  { to: ROUTES.HOME, label: 'Dashboard', icon: LayoutDashboard },
+  { to: ROUTES.VEHICLES, label: 'Vehicles', icon: Truck },
+  { to: ROUTES.DRIVERS, label: 'Drivers', icon: Users },
+  { to: ROUTES.REPORTS, label: 'Reports', icon: FileText },
 ]
 
 type MobileNavProps = {
@@ -17,7 +18,7 @@ export function MobileNav({ className }: MobileNavProps) {
   return (
     <nav
       className={cn(
-        'fixed bottom-0 left-0 right-0 z-30 flex items-center justify-around border-t border-slate-200 bg-white px-2 py-2',
+        'fixed bottom-0 left-0 right-0 z-30 flex items-center justify-around border-t border-slate-200 bg-white px-2 py-2 lg:hidden',
         className,
       )}
     >
@@ -40,3 +41,4 @@ export function MobileNav({ className }: MobileNavProps) {
     </nav>
   )
 }
+

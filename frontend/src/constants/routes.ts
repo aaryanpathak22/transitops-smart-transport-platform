@@ -1,6 +1,9 @@
 export const ROUTES = {
   HOME: '/',
-  USERS: '/users',
-  SETTINGS: '/settings',
+  VEHICLES: '/vehicles',
+  DRIVERS: '/drivers',
+  REPORTS: '/reports',
+  LOGOUT: '/logout',
   LOGIN: '/login',
 } as const
+
