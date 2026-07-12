@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { LayoutDashboard, Truck, Users, FileText } from 'lucide-react'
+import { LayoutDashboard, Truck, Users, FileText, LogOut } from 'lucide-react'
 import { ROUTES } from '@/constants/routes'
 import { cn } from '@/utils/cn'
 
@@ -8,6 +8,7 @@ const navItems = [
   { to: ROUTES.VEHICLES, label: 'Vehicles', icon: Truck },
   { to: ROUTES.DRIVERS, label: 'Drivers', icon: Users },
   { to: ROUTES.REPORTS, label: 'Reports', icon: FileText },
+  { to: ROUTES.LOGOUT, label: 'Logout', icon: LogOut },
 ]
 
 type MobileNavProps = {
@@ -29,8 +30,12 @@ export function MobileNav({ className }: MobileNavProps) {
           end={to === ROUTES.HOME}
           className={({ isActive }) =>
             cn(
-              'flex flex-col items-center gap-0.5 rounded-xl px-3 py-1 text-xs font-bold transition-all duration-200',
-              isActive ? 'text-blue-600 scale-[1.03]' : 'text-slate-400 hover:text-slate-600',
+              'flex flex-col items-center gap-0.5 rounded-xl px-2 py-1 text-xs font-bold transition-all duration-200',
+              isActive
+                ? to === ROUTES.LOGOUT
+                  ? 'text-red-600 scale-[1.03]'
+                  : 'text-blue-600 scale-[1.03]'
+                : 'text-slate-400 hover:text-slate-600',
             )
           }
         >
