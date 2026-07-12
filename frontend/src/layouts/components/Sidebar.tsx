@@ -17,11 +17,11 @@ type SidebarProps = {
 export function Sidebar({ onNavigate }: SidebarProps) {
   return (
     <div className="flex h-full flex-col bg-white">
-      <div className="flex h-16 items-center gap-2 border-b border-slate-200 px-6">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white">
-          <Bus className="h-4 w-4" />
+      <div className="flex h-16 items-center gap-2.5 border-b border-slate-100 px-6 bg-slate-50/30">
+        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 text-white shadow-[0_4px_12px_rgba(37,99,235,0.22)]">
+          <Bus className="h-4.5 w-4.5" />
         </div>
-        <span className="text-lg font-semibold text-slate-900">TransitOps</span>
+        <span className="text-lg font-bold tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">TransitOps</span>
       </div>
 
       <div className="flex flex-1 flex-col justify-between p-4">
@@ -34,10 +34,10 @@ export function Sidebar({ onNavigate }: SidebarProps) {
               onClick={onNavigate}
               className={({ isActive }) =>
                 cn(
-                  'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
+                  'flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-200 hover:translate-x-0.5',
                   isActive
-                    ? 'bg-blue-50 text-blue-700'
-                    : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900',
+                    ? 'bg-blue-50/80 text-blue-600 shadow-[inset_0_0_0_1px_rgba(59,130,246,0.06)]'
+                    : 'text-slate-500 hover:bg-slate-50 hover:text-slate-800',
                 )
               }
             >
@@ -53,10 +53,10 @@ export function Sidebar({ onNavigate }: SidebarProps) {
             onClick={onNavigate}
             className={({ isActive }) =>
               cn(
-                'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
+                'flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-200 hover:translate-x-0.5',
                 isActive
-                  ? 'bg-red-50 text-red-700'
-                  : 'text-slate-600 hover:bg-red-50 hover:text-red-600',
+                  ? 'bg-red-50 text-red-650'
+                  : 'text-slate-500 hover:bg-red-50/50 hover:text-red-600',
               )
             }
           >

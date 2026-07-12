@@ -14,14 +14,14 @@ export function DashboardLayout() {
       </aside>
 
       {isOpen && (
-        <div className="fixed inset-0 z-40 lg:hidden">
+        <div className="fixed inset-0 z-40 lg:hidden flex">
           <button
             type="button"
             aria-label="Close sidebar"
-            className="absolute inset-0 bg-slate-900/40"
+            className="absolute inset-0 bg-slate-900/40 animate-in fade-in duration-200 ease-out"
             onClick={close}
           />
-          <aside className="relative z-50 h-full w-64 border-r border-slate-200 bg-white shadow-xl">
+          <aside className="relative z-50 h-full w-64 border-r border-slate-100 bg-white shadow-2xl animate-in slide-in-from-left duration-250 ease-out">
             <Sidebar onNavigate={close} />
           </aside>
         </div>

@@ -18,7 +18,7 @@ export function MobileNav({ className }: MobileNavProps) {
   return (
     <nav
       className={cn(
-        'fixed bottom-0 left-0 right-0 z-30 flex items-center justify-around border-t border-slate-200 bg-white px-2 py-2 lg:hidden',
+        'fixed bottom-0 left-0 right-0 z-30 flex items-center justify-around border-t border-slate-100 bg-white/95 backdrop-blur-md px-2 py-2 lg:hidden shadow-[0_-4px_20px_rgba(148,163,184,0.06)]',
         className,
       )}
     >
@@ -29,13 +29,13 @@ export function MobileNav({ className }: MobileNavProps) {
           end={to === ROUTES.HOME}
           className={({ isActive }) =>
             cn(
-              'flex flex-col items-center gap-0.5 rounded-lg px-3 py-1.5 text-xs font-medium',
-              isActive ? 'text-blue-600' : 'text-slate-500',
+              'flex flex-col items-center gap-0.5 rounded-xl px-3 py-1 text-xs font-bold transition-all duration-200',
+              isActive ? 'text-blue-600 scale-[1.03]' : 'text-slate-400 hover:text-slate-600',
             )
           }
         >
           <Icon className="h-5 w-5" />
-          {label}
+          <span className="text-[10px]">{label}</span>
         </NavLink>
       ))}
     </nav>
